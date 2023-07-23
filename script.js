@@ -5,6 +5,7 @@ let playerScoreDisplay = document.getElementById('player-score');
 let computerScoreDisplay = document.getElementById('computer-score');
 let roundNumberDisplay = document.getElementById('round-number');
 const possibleChoices = document.querySelectorAll('.main-button');
+let computerChoice;
 let userChoice;
 let result;
 let playerScore = 0;
@@ -59,14 +60,17 @@ function gameOver() {
 }
 
 const reset = document.querySelector('.restart-button');
-  reset.addEventListener('click', () => { restartGame() })
+  reset.addEventListener('click', restartGame)
 
-    
-
-// function restartGame() {
-//   playerScore = 0;
-//   computerScore = 0;
-//   roundNumber = 0;
-//   //empty all inputs
-//   //gives an option to start again
-// }
+function restartGame() {
+computerChoiceDisplay.innerHTML ="";
+userChoiceDisplay.innerHTML ="";
+resultDisplay.innerHTML ="";
+playerScore = 0;
+computerScore = 0;
+roundNumber = 0;
+playerScoreDisplay.innerHTML = playerScore;
+computerScoreDisplay.innerHTML = computerScore;
+roundNumberDisplay.innerHTML = roundNumber;
+possibleChoices.forEach((possibleChoice) => (possibleChoice.disabled = false));
+}
