@@ -1,9 +1,18 @@
 const computerChoiceDisplay = document.getElementById('computer-choice');
 const userChoiceDisplay = document.getElementById('user-choice');
 const resultDisplay = document.getElementById('result');
-const possibleChoices = document.querySelectorAll('button');
+let playerScoreDisplay = document.getElementById('player-score');
+let computerScoreDisplay = document.getElementById('computer-score');
+let roundNumberDisplay = document.getElementById('round-number');
+const possibleChoices = document.querySelectorAll('.main-button');
 let userChoice;
 let result;
+let playerScore = 0;
+let computerScore = 0;
+let roundNumber = 0;
+playerScoreDisplay.innerHTML = playerScore;
+computerScoreDisplay.innerHTML = computerScore;
+roundNumberDisplay.innerHTML = roundNumber;
 
 possibleChoices.forEach(possibleChoice => possibleChoice.addEventListener('click', 
 (e) => {
@@ -26,11 +35,38 @@ function getResult() {
   } else if (userChoice === 'paper' && computerChoice === 'rock' ||
              userChoice === 'rock' && computerChoice === 'scissors' ||
              userChoice === 'scissors' && computerChoice === 'paper') {
-    result = "Congratulations, you win!"  
+    result = "Congratulations, you win!"
+              playerScore++;
   } else if (computerChoice === 'paper' && userChoice === 'rock' ||
              computerChoice === 'rock' && userChoice === 'scissors' ||
              computerChoice === 'scissors' && userChoice === 'paper') { 
     result = "Oh too bad, you lose!" 
+              computerScore++;
   }
+  roundNumber++;
+  roundNumberDisplay.innerHTML = roundNumber;
   resultDisplay.innerHTML = result;
+  playerScoreDisplay.innerHTML = playerScore;
+  computerScoreDisplay.innerHTML = computerScore;
+  gameOver();
 }
+
+function gameOver() {
+  if (roundNumber >= 5) {
+  possibleChoices.forEach((possibleChoice) => (possibleChoice.disabled = true));
+  alert("Game Over");
+  }
+}
+
+const reset = document.querySelector('.restart-button');
+  reset.addEventListener('click', () => { restartGame() })
+
+    
+
+// function restartGame() {
+//   playerScore = 0;
+//   computerScore = 0;
+//   roundNumber = 0;
+//   //empty all inputs
+//   //gives an option to start again
+// }
