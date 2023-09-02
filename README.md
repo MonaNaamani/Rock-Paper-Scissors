@@ -13,6 +13,6 @@ The Rock Paper Scissors project is a web-based application developed as part of 
 
 ## How to Play:
 
-You can enjoy the game by visiting [here](#https://monanaamani.github.io/Rock-Paper-Scissors/). Choose your move Rock, Paper, or Scissors, and see if you can outsmart the computer!
+You can enjoy the game by visiting [here](https://monanaamani.github.io/Rock-Paper-Scissors/). Choose your move Rock, Paper, or Scissors, and see if you can outsmart the computer!
 
 Please don't hesitate to explore the code, provide feedback, or reach out if you have any questions or suggestions.
