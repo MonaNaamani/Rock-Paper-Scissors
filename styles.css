@@ -93,3 +93,9 @@ button {
   cursor: pointer;
 }
 
+.bg-container {
+  background-image: url(./pictures/leafs.JPG);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
