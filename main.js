@@ -14,6 +14,7 @@ let roundNumber = 0;
 playerScoreDisplay.innerHTML = playerScore;
 computerScoreDisplay.innerHTML = computerScore;
 roundNumberDisplay.innerHTML = roundNumber;
+resultDisplay.innerHTML = "Whoever gets 5 points first wins!";
 
 possibleChoices.forEach(possibleChoice => possibleChoice.addEventListener('click', 
 (e) => {
@@ -21,6 +22,7 @@ possibleChoices.forEach(possibleChoice => possibleChoice.addEventListener('click
   userChoiceDisplay.innerHTML = userChoice;
   generateComputerChoice();
   getResult();
+  playSound();
 }))
 
 let generateComputerChoice = () => {
@@ -52,14 +54,15 @@ function getResult() {
   gameOver();
 }
 
+
 function gameOver() {
   if (playerScore === 5) {
   possibleChoices.forEach((possibleChoice) => (possibleChoice.disabled = true));
-  alert("Game Over");
+  alert("Game Over! Press the restart button to play again.");
   resultDisplay.innerHTML = "Game over, you win!";
   } else  if (computerScore === 5) {
   possibleChoices.forEach((possibleChoice) => (possibleChoice.disabled = true));
-  alert("Game Over");
+  alert("Game Over! Press the restart button to play again.");
   resultDisplay.innerHTML = "Game over, computer wins!";
   }
 }
@@ -68,9 +71,9 @@ const reset = document.querySelector('.restart-button');
   reset.addEventListener('click', restartGame)
 
 function restartGame() {
+resultDisplay.innerHTML = "Whoever gets 5 points first wins!";
 computerChoiceDisplay.innerHTML ="";
 userChoiceDisplay.innerHTML ="";
-resultDisplay.innerHTML ="";
 playerScore = 0;
 computerScore = 0;
 roundNumber = 0;
@@ -90,3 +93,9 @@ function removeTransition(e) {
   if (e.propertyName !== 'transform') return;
   this.classList.remove('pressed');
 };
+
+function playSound () {
+  const audio = document.getElementById('sound');
+  audio.currentTime = 0;
+  audio.play();
+}
